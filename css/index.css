@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: #edeae0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 99999999;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+nav a:hover {
+  border-right: 1px solid #333;
+  border-left: 1px solid #333;
+  padding: 0 4px;
+}
+/* Responsive: hide nav on small screens */
+@media (max-width: 600px) {
+  nav {
+    display: none;
+  }
+  sl-button.head-button {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 601px) {
+  sl-button.head-button {
+    display: none;
+  }
+}
+
+sl-drawer nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+}
+
+sl-drawer nav a {
+  padding: 0.5rem 0.5rem;
+}
+sl-drawer nav a:hover {
+  background-color: #3333336d;
+}
+
+.carousel-thumbnails {
+  /* --slide-aspect-ratio: 16/9; */
+  margin-top: 4rem;
+  height: 70vh;
+  background-color: #e5e4e427;
+  padding: 0;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.thumbnails__scroller {
+  display: flex;
+  gap: var(--sl-spacing-small);
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  scroll-padding: var(--sl-spacing-small);
+}
+.thumbnails__scroller img {
+  height: 40px;
+  object-fit: contain;
+}
+
+.thumbnails__scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.thumbnails__image {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  opacity: 0.3;
+  will-change: opacity;
+  transition: 250ms opacity;
+
+  cursor: pointer;
+}
+
+.thumbnails__image.active {
+  opacity: 1;
+}
+
+/* youtube videos section */
+
+#my-youtube-emmbed {
+  margin-top: 1rem;
+  background-color: #e5e4e427;
+  padding: 0rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

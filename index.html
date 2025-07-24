@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="assets/omsai-logo.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
+    ></script>
+
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Om Sai Blasting</title>
+  </head>
+  <body>
+    <header>
+      <div onclick="window.location.href='/'" class="logo">
+        <img height="100%" src="assets/omsai-logo.png" />
+        <span>Om Sai Blasting</span>
+      </div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#my-youtube-emmbed">YouTube</a>
+
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+      <sl-button
+        class="head-button"
+        variant="default"
+        size="small"
+        circle
+        onclick="document.getElementById('mobile-drawer').show()"
+      >
+        <sl-icon name="list"></sl-icon>
+      </sl-button>
+    </header>
+
+    <sl-drawer label="Menu" placement="start" id="mobile-drawer">
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+    </sl-drawer>
+    <sl-carousel class="carousel-thumbnails" navigation loop autoplay>
+      <sl-carousel-item>
+        <img
+          alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
+          src="/assets/image.png"
+        />
+      </sl-carousel-item>
+      <sl-carousel-item>
+        <img
+          alt="A waterfall in the middle of a forest (by Thomas Kelly on Unsplash)"
+          src="assets/image2.png"
+        />
+      </sl-carousel-item>
+      <sl-carousel-item>
+        <img
+          alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
+          src="assets/image3.png"
+        />
+      </sl-carousel-item>
+      <sl-carousel-item>
+        <img
+          alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
+          src="assets/image4.png"
+        />
+      </sl-carousel-item>
+      <sl-carousel-item>
+        <img
+          alt="The sun is setting over a lavender field (by Leonard Cotte on Unsplash)"
+          src="assets/image5.png"
+        />
+      </sl-carousel-item>
+    </sl-carousel>
+
+    <div class="thumbnails">
+      <div class="thumbnails__scroller">
+        <img
+          alt="Thumbnail by 1"
+          class="thumbnails__image active"
+          src="/assets/image.png"
+        />
+        <img
+          alt="Thumbnail by 2"
+          class="thumbnails__image"
+          src="assets/image2.png"
+        />
+        <img
+          alt="Thumbnail by 3"
+          class="thumbnails__image"
+          src="assets/image3.png"
+        />
+        <img
+          alt="Thumbnail by 3"
+          class="thumbnails__image"
+          src="assets/image4.png"
+        />
+        <img
+          alt="Thumbnail by 3"
+          class="thumbnails__image"
+          src="assets/image5.png"
+        />
+      </div>
+    </div>
+
+    <div id="my-youtube-emmbed">
+      <h2
+        style="
+          text-align: center;
+          font-size: xx-large;
+          border-bottom: 4px solid#8B0000;
+          padding: 0 1rem;
+        "
+      >
+        Our Videos
+      </h2>
+      <sl-split-panel
+        style="width: 50%; padding: 2rem; --divider-width: 0px"
+        disabled
+      >
+        <div slot="start">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/2N1MmqTnep4"
+            title="YouTube Short"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+        <div slot="end">
+          <sl-split-panel vertical style="height: 400px">
+            <div slot="start">
+              <iframe
+                height="100%"
+                width="100%"
+                src="https://www.youtube.com/embed/2N1MmqTnep4"
+                title="Video 3"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div slot="end">
+              <iframe
+                height="100%"
+                width="100%"
+                src="https://www.youtube.com/embed/VIDEO_ID_3"
+                title="Video 3"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </sl-split-panel>
+        </div>
+      </sl-split-panel>
+    </div>
+    <div style="margin-top: 2rem">Anothor section</div>
+
+    <script>
+      {
+        const carousel = document.querySelector(".carousel-thumbnails");
+        const scroller = document.querySelector(".thumbnails__scroller");
+        const thumbnails = document.querySelectorAll(".thumbnails__image");
+
+        scroller.addEventListener("click", (e) => {
+          const target = e.target;
+
+          if (target.matches(".thumbnails__image")) {
+            const index = [...thumbnails].indexOf(target);
+            carousel.goToSlide(index);
+          }
+        });
+
+        carousel.addEventListener("sl-slide-change", (e) => {
+          const slideIndex = e.detail.index;
+
+          [...thumbnails].forEach((thumb, i) => {
+            thumb.classList.toggle("active", i === slideIndex);
+            if (i === slideIndex) {
+              thumb.scrollIntoView({
+                block: "nearest",
+              });
+            }
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
