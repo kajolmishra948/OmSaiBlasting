@@ -18,34 +18,56 @@
     ></script>
 
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/header.css" />
     <title>Om Sai Blasting</title>
   </head>
   <body>
-    <header>
-      <div onclick="window.location.href='/'" class="logo">
-        <img height="100%" src="assets/omsai-logo.png" />
-        <span>Om Sai Blasting</span>
+    <header class="main-header">
+      <div class="header-left logo">
+        <img
+          height="100%"
+          onclick="window.location.href='/'"
+          src="assets/omsai-logo-home.png"
+        />
+        <sl-button
+          class="head-button"
+          variant="default"
+          circle
+          onclick="document.getElementById('mobile-drawer').show()"
+        >
+          <sl-icon name="list"></sl-icon>
+        </sl-button>
       </div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#my-youtube-emmbed">YouTube</a>
-
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-      </nav>
-      <sl-button
-        class="head-button"
-        variant="default"
-        size="small"
-        circle
-        onclick="document.getElementById('mobile-drawer').show()"
-      >
-        <sl-icon name="list"></sl-icon>
-      </sl-button>
+      <div class="header-right">
+        <div class="addressSection">
+          <div class="contact-number">
+            <span>+91 9876543210</span>&nbsp;
+            <span style="font-size: 1.5rem">/</span>
+            &nbsp;
+            <span>+91 9876543210</span>
+          </div>
+          <div class="social-iconblock">
+            <img src="./assets/youtube-icon.png" />
+            <img src="./assets/call.png" />
+          </div>
+        </div>
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#my-youtube-emmbed">YouTube</a>
+          <a href="#">Services</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
     </header>
 
-    <sl-drawer label="Menu" placement="start" id="mobile-drawer">
+    <sl-drawer label="Om Sai Blasting" placement="start" id="mobile-drawer">
+      <img
+        style="width: 50%"
+        src="assets/omsai-logo-home.png"
+        label="menu"
+        slot="label"
+      />
       <nav>
         <a href="#">Home</a>
         <a href="#">About</a>
@@ -53,7 +75,7 @@
         <a href="#">Contact</a>
       </nav>
     </sl-drawer>
-    <sl-carousel class="carousel-thumbnails" navigation loop autoplay>
+    <sl-carousel class="carousel-thumbnails" pagination loop autoplay>
       <sl-carousel-item>
         <img
           alt="The sun shines on the mountains and trees (by Adam Kool on Unsplash)"
@@ -86,36 +108,6 @@
       </sl-carousel-item>
     </sl-carousel>
 
-    <div class="thumbnails">
-      <div class="thumbnails__scroller">
-        <img
-          alt="Thumbnail by 1"
-          class="thumbnails__image active"
-          src="/assets/image.png"
-        />
-        <img
-          alt="Thumbnail by 2"
-          class="thumbnails__image"
-          src="assets/image2.png"
-        />
-        <img
-          alt="Thumbnail by 3"
-          class="thumbnails__image"
-          src="assets/image3.png"
-        />
-        <img
-          alt="Thumbnail by 3"
-          class="thumbnails__image"
-          src="assets/image4.png"
-        />
-        <img
-          alt="Thumbnail by 3"
-          class="thumbnails__image"
-          src="assets/image5.png"
-        />
-      </div>
-    </div>
-
     <div id="my-youtube-emmbed">
       <h2
         style="
@@ -127,6 +119,7 @@
       >
         Our Videos
       </h2>
+
       <sl-split-panel
         style="width: 50%; padding: 2rem; --divider-width: 0px"
         disabled
@@ -172,17 +165,7 @@
     <script>
       {
         const carousel = document.querySelector(".carousel-thumbnails");
-        const scroller = document.querySelector(".thumbnails__scroller");
         const thumbnails = document.querySelectorAll(".thumbnails__image");
-
-        scroller.addEventListener("click", (e) => {
-          const target = e.target;
-
-          if (target.matches(".thumbnails__image")) {
-            const index = [...thumbnails].indexOf(target);
-            carousel.goToSlide(index);
-          }
-        });
 
         carousel.addEventListener("sl-slide-change", (e) => {
           const slideIndex = e.detail.index;
