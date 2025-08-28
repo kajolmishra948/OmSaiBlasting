@@ -5,6 +5,10 @@ body {
   overflow-x: hidden;
   box-sizing: border-box;
 }
+.section-spacing {
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
 
 .carousel-thumbnails {
   /* --slide-aspect-ratio: 16/9; */
